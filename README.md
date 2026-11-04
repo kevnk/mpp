@@ -38,6 +38,8 @@ This repository contains the source for [mpp.dev](https://mpp.dev). It is the pr
 pnpm install      # Install dependencies
 pnpm run dev      # Start development server
 pnpm run build    # Production build
+pnpm generate:discovery # Generate schemas/discovery.json (check:types needs it)
+pnpm test         # Run unit tests
 pnpm run check:sdk-drift # Validate SDK reference pages against mppx exports
 pnpm run preview  # Preview production build
 ```
@@ -123,11 +125,14 @@ Contributions to documentation, the service directory, and site improvements are
 
 ### Pull request checklist
 
-1. **Types pass**: `pnpm check:types`
-2. **Build succeeds**: `pnpm build`
-3. **Lint passes**: `pnpm check:ci`
-4. **SDK references stay in sync** (if touching SDK docs or `vocs.config.ts`): `pnpm check:sdk-drift`
-5. **E2E tests pass** (if touching terminal or interactive components): `pnpm test:e2e`
+1. **Registry is generated**: `pnpm generate:discovery` (`check:types` reads the generated `schemas/discovery.json`)
+2. **Types pass**: `pnpm check:types`
+3. **Tests pass**: `pnpm test`
+4. **Generated Markdown is valid**: `pnpm check:markdown`
+5. **Build succeeds**: `pnpm build`
+6. **Lint passes**: `pnpm check:ci`
+7. **SDK references stay in sync** (if touching SDK docs or `vocs.config.ts`): `pnpm check:sdk-drift`
+8. **E2E tests pass** (if touching terminal or interactive components): `pnpm test:e2e`
 
 ### Types of contributions
 
